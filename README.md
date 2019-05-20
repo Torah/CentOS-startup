@@ -15,5 +15,6 @@ AutomaticLogin=root#你想自动登陆的用户名
 ctrl+shift+T  /usr/bin/gnome-terminal
 
 When finished, you should:
-1) set a serials of parameters for your downloaded docker images to container.
-2) setup the aliyun docker accelerator(in mainland).
+1) install software in bt-panel
+2) set a serials of parameters for your downloaded docker images to container.
+3) setup the aliyun docker accelerator(in mainland).
