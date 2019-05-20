@@ -42,7 +42,11 @@ docker pull zexi/listen1:v1
 docker pull docker.io/tianon/grafana:latest
 docker pull gitlab/gitlab-ce:10.8.0-ce.0
 docker pull kishitat/wordpress-all-in-one
-mvertes/alpine-mongo:latest
+docker pull mvertes/alpine-mongo:latest
 docker pull sebp/elk:640
 docker pull sebp/elk:670
 
+# 针对pip安装无法替换老包的问题
+pip install --upgrade pip
+sudo pip install requests --ignore-installed requests
+pip install docker
