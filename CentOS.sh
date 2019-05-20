@@ -3,13 +3,6 @@
 sudo yum -y update
 sudo yum upgrade
 
-sudo yum remove docker docker-common docker-selinux docker-engine
-sudo yum install -y yum-utils device-mapper-persistent-data lvm2
-sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-sudo yum install -y docker-ce
-sudo systemctl start docker
-sudo systemctl enable docker
-
 yum install -y wget && wget -O install.sh http://download.bt.cn/install/install_6.0.sh && bash install.sh
 
 
@@ -36,6 +29,18 @@ cd sunloginclient
 wget https://download.teamviewer.com/download/linux/teamviewer.x86_64.rpm
 sudo yum install -y teamviewer.x86_64.rpm
 
+# 针对pip安装无法替换老包的问题
+pip install --upgrade pip
+sudo pip install requests --ignore-installed requests
+pip install docker
+
+sudo yum remove docker docker-common docker-selinux docker-engine
+sudo yum install -y yum-utils device-mapper-persistent-data lvm2
+sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+sudo yum install -y docker-ce
+sudo systemctl start docker
+sudo systemctl enable docker
+
 docker pull jellyfin/jellyfin
 docker pull oldiy/my-calibre-webserver-docker
 docker pull zexi/listen1:v1
@@ -45,8 +50,3 @@ docker pull kishitat/wordpress-all-in-one
 docker pull mvertes/alpine-mongo:latest
 docker pull sebp/elk:640
 docker pull sebp/elk:670
-
-# 针对pip安装无法替换老包的问题
-pip install --upgrade pip
-sudo pip install requests --ignore-installed requests
-pip install docker
