@@ -1,6 +1,8 @@
 # CentOS-startup
 
-This is a pre-set script for CentOS server. Use it when a fresh CentOS setup, with terminal command "git clone https://github.com/Torah/CentOS-startup && cd CentOS-startup && bash CentOS.sh"
+This is a pre-set script for CentOS server. Use it when a fresh CentOS setup, with terminal command
+
+	git clone https://github.com/Torah/CentOS-startup && cd CentOS-startup && bash CentOS.sh
 
 This script contains pre-installed docker, bt-panel, ntf-viewer, media player vlc (for jellyfin), SunLogin, Teamviewer, etc. 
 
