@@ -9,3 +9,5 @@ CREATE USER 'pyspider'@'%' IDENTIFIED BY 'pyspider-pass';
 
 sudo apt-get install redis-server
 sudo apt-get install supervisor
+sudo apt-get install -y iptux
+

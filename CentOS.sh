@@ -1,6 +1,7 @@
 #!/bin/bash
+# -*- enconding:utf-8 -*-
 
-sudo yum -y update
+sudo yum update -y
 sudo yum upgrade
 
 yum install -y wget && wget -O install.sh http://download.bt.cn/install/install_6.0.sh && bash install.sh
@@ -54,27 +55,29 @@ pip install --upgrade pip
 sudo pip install requests --ignore-installed requests
 pip install docker
 
+# 这个可能需要修改dockerrepo
 sudo yum remove docker docker-common docker-selinux docker-engine
 sudo yum install -y yum-utils device-mapper-persistent-data lvm2
 sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-# yum list docker-ce --showduplicates | sort -r
+yum list docker-ce --showduplicates | sort -r
 sudo yum install -y docker-ce
 sudo systemctl start docker
 sudo systemctl enable docker
 
-docker pull jellyfin/jellyfin
+#docker pull jellyfin/jellyfin
+docker pull linuxserver/plex
 docker pull oldiy/my-calibre-webserver-docker
 docker pull zexi/listen1:v1
 docker pull docker.io/tianon/grafana:latest
-docker pull gitlab/gitlab-ce:10.8.0-ce.0
+docker pull gitlab/gitlab-ce:10.8.4-ce.0
 docker pull kishitat/wordpress-all-in-one
 docker pull mvertes/alpine-mongo:latest
 
 # 最全的版本，确认版本对应的标签。上面没有做的版本，还可以去其他仓库找到。最后是自己build一个
 # https://hub.docker.com/r/sebp/elk
-docker pull sebp/elk:640
-docker pull sebp/elk:670
-docker pull sebp/elk:es500_l500_k500
+#docker pull sebp/elk:640
+#docker pull sebp/elk:670
+#docker pull sebp/elk:es500_l500_k500
 
 # https://www.colabug.com/4201254.html
 yum update -y
@@ -102,3 +105,15 @@ easy_install mysql-connector==2.1.3
 easy_install redis
 pip install pyspider
 mkdir /etc/pyspider
+
+
+# 安装elasticsearch-head https://www.jianshu.com/p/e3f7bf6277f9
+git clone git://github.com/mobz/elasticsearch-head.git
+cd elasticsearch-head
+yum install npm==10.8.4 # sudo yum install nodejs
+npm install -g grunt-cli
+npm install grunt --save
+npm install
+#修改启动文件：修改 elasticsearch-head 目录下的 Gruntfile.js 文件，在 options 属性内增加 hostname，设置为 0.0.0.0。
+grunt server
+
